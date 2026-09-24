@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio cá nhân của Lưu Thanh Lâm – Sinh viên Kỹ thuật phần mềm, đam mê lập trình web và AI." />
+  <title>Lưu Thanh Lâm – Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="header" id="header">
+    <div class="container nav-container">
+      <a href="#hero" class="logo">LTL<span class="logo-dot">.</span></a>
+
+      <nav class="nav" id="nav" aria-label="Menu chính">
+        <ul class="nav-list">
+          <li><a href="#about"    class="nav-link">Giới thiệu</a></li>
+          <li><a href="#skills"   class="nav-link">Kỹ năng</a></li>
+          <li><a href="#projects" class="nav-link">Dự án</a></li>
+          <li><a href="#contact"  class="nav-link">Liên hệ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Chuyển chế độ tối/sáng" title="Dark / Light mode">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Mở menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg-blur"></div>
+      <div class="container hero-container">
+        <div class="hero-text">
+          <p class="hero-greeting">Xin chào, mình là</p>
+          <h1 class="hero-name">Lưu Thanh Lâm</h1>
+          <p class="hero-role">Sinh viên năm 2, ngành <span class="accent">AIoT - Trí tuệ nhân tạo vạn vật</span></p>
+          <p class="hero-bio">
+            Đam mê học hỏi, tìm tòi và sáng tạo những giải pháp công nghệ mới.
+            Thích xây dựng các ứng dụng có tính thực tiễn cao kết hợp giữa 
+            phần mềm và trí tuệ nhân tạo.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">Xem dự án</a>
+            <a href="#contact"  class="btn btn-outline">Liên hệ</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-avatar-placeholder">
+            <div class="avatar-ring"></div>
+            <div class="avatar-initials">LTL</div>
+            <div class="avatar-badges">
+              <span class="badge badge-1">HTML</span>
+              <span class="badge badge-2">CSS</span>
+              <span class="badge badge-3">JS</span>
+              <span class="badge badge-4">Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">01 / Giới thiệu</span>
+          <h2 class="section-title">Về mình</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              Mình là <strong>Lưu Thanh Lâm</strong>, sinh viên năm hai ngành
+              <strong>AIoT - Trí tuệ nhân tạo vạn vật</strong> tại Học viện Công nghệ Bưu chính
+              Viễn thông (PTIT). Mình đam mê học hỏi, tìm tòi sáng tạo trong lĩnh vực công nghệ.
+            </p>
+            <p>
+              Trong suốt quá trình học, mình đã xây dựng nhiều dự án từ web tĩnh
+              đến ứng dụng có tích hợp AI. Mình tin rằng code tốt không chỉ chạy
+              đúng mà còn phải dễ đọc, dễ bảo trì và tạo ra trải nghiệm người dùng tốt.
+            </p>
+            <p>
+              Ngoài thời gian học tập và nghiên cứu, sở thích của mình là chơi game
+              để giải trí và rèn luyện tư duy logic.
+            </p>
+          </div>
+          <div class="about-info reveal">
+            <div class="info-card">
+              <div class="info-item">
+                <span class="info-label">Trường</span>
+                <span class="info-value">PTIT Hà Nội</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Ngành</span>
+                <span class="info-value">AIoT</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Năm học</span>
+                <span class="info-value">Năm 2</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Email</span>
+                <span class="info-value">lamlt.b25tv050@stu.ptit.edu.vn</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Sở thích</span>
+                <span class="info-value">Chơi game</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">02 / Kỹ năng</span>
+          <h2 class="section-title">Công nghệ &amp; Kỹ năng</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card reveal"><span class="skill-icon">🐍</span><span class="skill-name">Python Cơ bản</span></div>
+          <div class="skill-card reveal"><span class="skill-icon">🌐</span><span class="skill-name">HTML5</span></div>
+          <div class="skill-card reveal"><span class="skill-icon">🎨</span><span class="skill-name">CSS3</span></div>
+          <div class="skill-card reveal"><span class="skill-icon">⚡</span><span class="skill-name">JavaScript</span></div>
+          <div class="skill-card reveal"><span class="skill-icon">🤖</span><span class="skill-name">AI / ML</span></div>
+          <div class="skill-card reveal"><span class="skill-icon">🔧</span><span class="skill-name">Git &amp; GitHub</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">03 / Dự án</span>
+          <h2 class="section-title">Các dự án nổi bật</h2>
+        </div>
+
+        <div class="project-filter">
+          <div class="search-wrapper">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input
+              type="text"
+              id="project-search"
+              class="search-input"
+              placeholder="Tìm kiếm dự án theo tên, mô tả, tag..."
+              aria-label="Tìm kiếm dự án"
+            />
+            <button class="search-clear" id="search-clear" aria-label="Xóa tìm kiếm" hidden>✕</button>
+          </div>
+          <p class="project-count" id="project-count">3 dự án</p>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+
+          <article class="project-card reveal" data-tags="python ai nckh hybridparser">
+            <div class="project-header">
+              <span class="project-number">01</span>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="Xem code">📂</a>
+                <a href="#" class="project-link" aria-label="Xem demo">🔗</a>
+              </div>
+            </div>
+            <h3 class="project-title">HybridParser</h3>
+            <p class="project-desc">
+              Dự án nghiên cứu khoa học (NCKH) về trích xuất và phân tích dữ liệu ứng dụng các mô hình ngôn ngữ lớn (LLM).
+            </p>
+            <div class="project-tags">
+              <span class="tag">#python</span>
+              <span class="tag">#ai</span>
+              <span class="tag">#nckh</span>
+              <span class="tag">#llm</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-tags="python ai nckh agent">
+            <div class="project-header">
+              <span class="project-number">02</span>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="Xem code">📂</a>
+                <a href="#" class="project-link" aria-label="Xem demo">🔗</a>
+              </div>
+            </div>
+            <h3 class="project-title">AMA-Agent</h3>
+            <p class="project-desc">
+              Dự án nghiên cứu khoa học (NCKH) xây dựng hệ thống đa tác vụ (Agent) tự động hóa quy trình phân tích và phản hồi.
+            </p>
+            <div class="project-tags">
+              <span class="tag">#python</span>
+              <span class="tag">#ai</span>
+              <span class="tag">#nckh</span>
+              <span class="tag">#agent</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-tags="web html css javascript portfolio">
+            <div class="project-header">
+              <span class="project-number">03</span>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="Xem code">📂</a>
+                <a href="#" class="project-link" aria-label="Xem demo">🔗</a>
+              </div>
+            </div>
+            <h3 class="project-title">Portfolio Cá Nhân</h3>
+            <p class="project-desc">
+              Trang web giới thiệu bản thân thiết kế hiện đại, hỗ trợ dark/light mode và responsive đầy đủ bằng HTML, CSS, JS thuần.
+            </p>
+            <div class="project-tags">
+              <span class="tag">#web</span>
+              <span class="tag">#html</span>
+              <span class="tag">#css</span>
+              <span class="tag">#javascript</span>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="projects-empty" id="projects-empty" hidden>
+          <span class="empty-icon" aria-hidden="true">🔎</span>
+          <p>Không tìm thấy dự án phù hợp.</p>
+          <button class="btn btn-outline btn-sm" id="clear-search-btn">Xóa tìm kiếm</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">04 / Liên hệ</span>
+          <h2 class="section-title">Kết nối với mình</h2>
+        </div>
+        <div class="contact-grid">
+
+          <div class="contact-info reveal">
+            <p class="contact-intro">
+              Bạn có dự án thú vị, cơ hội hợp tác, hoặc chỉ muốn trò chuyện về công nghệ?
+              Mình luôn sẵn sàng lắng nghe!
+            </p>
+            <div class="contact-items">
+              <div class="contact-item">
+                <span class="contact-icon" aria-hidden="true">📧</span>
+                <div>
+                  <strong>Email</strong>
+                  <p>lamlt.b25tv050@stu.ptit.edu.vn</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-icon" aria-hidden="true">📍</span>
+                <div>
+                  <strong>Địa điểm</strong>
+                  <p>Hà Nội, Việt Nam</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-icon" aria-hidden="true">💻</span>
+                <div>
+                  <strong>GitHub</strong>
+                  <p><a href="https://github.com/luuthanhlam04-cloud" target="_blank" rel="noopener noreferrer">luuthanhlam04-cloud</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper reveal">
+            <form class="contact-form" id="contact-form" novalidate>
+
+              <div class="form-group">
+                <label for="name" class="form-label">Họ và tên <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" class="form-input"
+                  placeholder="Nguyễn Văn A" autocomplete="name" />
+                <p class="form-error" id="name-error" role="alert"></p>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email <span class="required" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" class="form-input"
+                  placeholder="example@email.com" autocomplete="email" />
+                <p class="form-error" id="email-error" role="alert"></p>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Nội dung <span class="required" aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" class="form-input form-textarea"
+                  placeholder="Bạn muốn nhắn gì cho mình?"
+                  maxlength="300" rows="5"></textarea>
+                <p class="form-error" id="message-error" role="alert"></p>
+                <p class="char-counter" id="char-counter">0 / 300 ký tự</p>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+                Gửi tin nhắn ✉️
+              </button>
+
+              <div class="form-success" id="form-success" hidden>
+                <span aria-hidden="true">✅</span>
+                Gửi thông tin thành công! Mình sẽ phản hồi trong vài ngày.
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="container footer-container">
+      <p class="footer-copy">
+        © <span id="current-year"></span> Lưu Thanh Lâm. Made with ❤️ &amp; ☕
+      </p>
+      <a href="#hero" class="footer-link">Đầu trang ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
