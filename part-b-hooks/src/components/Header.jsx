@@ -10,7 +10,7 @@ export default function Header() {
     <header className="app-header">
       <div className="header-info">
         <h2>Sổ Chi Tiêu Cá Nhân</h2>
-        <p className="student-badge">SV: Lưu Thanh Lâm - MS: B25DCTV050 (Phần B - Function Component + Hooks)</p>
+        <p className="student-badge">SV: Lưu Thanh Lâm - MS: B25DCTV050 - Lớp: D25CQTV02-B (Phần B - Function Component + Hooks)</p>
       </div>
 
       <div className="header-controls">

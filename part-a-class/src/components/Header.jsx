@@ -9,7 +9,7 @@ class Header extends Component {
       <header className="app-header">
         <div className="header-info">
           <h2>Sổ Chi Tiêu Cá Nhân</h2>
-          <p className="student-badge">SV: Lưu Thanh Lâm - MS: B25DCTV050 (Phần A - Class Component)</p>
+          <p className="student-badge">SV: Lưu Thanh Lâm - MS: B25DCTV050 - Lớp: D25CQTV02-B (Phần A - Class Component)</p>
         </div>
 
         <div className="header-clock-controls">

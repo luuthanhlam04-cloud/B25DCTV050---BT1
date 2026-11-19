@@ -2,7 +2,7 @@
 
 - **Sinh viên:** Lưu Thanh Lâm
 - **Mã sinh viên:** B25DCTV050
-- **Lớp:** D25CQTV01-B
+- **Lớp:** D25CQTV02-B
 - **Học phần:** Lập trình Web (RIPT1306-20261-08)
 - **Giảng viên:** ThS. Ngô Văn Nhận
 
