@@ -1,9 +1,5 @@
 import React from 'react';
 
-/**
- * Component thống kê tổng tiền theo từng loại
- * Đáp ứng yêu cầu nâng cao: Hiển thị nhanh số tiền đã chi theo từng danh mục
- */
 export default function CategoryStats({ expenses }) {
   const categories = [
     { name: 'Ăn uống', badge: 'badge-eating' },
@@ -20,7 +16,7 @@ export default function CategoryStats({ expenses }) {
 
   return (
     <div className="category-stats-card">
-      <div className="stats-title">📊 Thống kê chi tiêu theo từng loại:</div>
+      <div className="stats-title">Thống kê chi tiêu theo loại:</div>
       <div className="stats-grid">
         {categories.map((cat) => {
           const total = getCategoryTotal(cat.name);

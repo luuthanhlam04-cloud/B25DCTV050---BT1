@@ -9,12 +9,11 @@ class Clock extends Component {
   }
 
   componentDidMount() {
-    console.log('[Clock] componentDidMount: Khởi tạo setInterval');
     this.timerID = setInterval(() => this.tick(), 1000);
   }
 
   componentWillUnmount() {
-    console.log('[Clock] componentWillUnmount: Dừng setInterval đúng cách khi bị ẩn');
+    // Xóa bộ đếm thời gian khi component bị unmount
     clearInterval(this.timerID);
   }
 
@@ -25,9 +24,10 @@ class Clock extends Component {
   }
 
   render() {
+    const { time } = this.state;
     return (
       <div className="clock-box">
-        🕒 Hiện tại: <strong>{this.state.time.toLocaleTimeString('vi-VN')}</strong> ({this.state.time.toLocaleDateString('vi-VN')})
+        Đồng hồ: <strong>{time.toLocaleTimeString('vi-VN')}</strong> ({time.toLocaleDateString('vi-VN')})
       </div>
     );
   }

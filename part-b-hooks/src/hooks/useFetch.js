@@ -1,16 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getLocalExpenses, saveLocalExpenses } from '../services/mockApi';
 
-/**
- * Custom hook useFetch: Lấy, thêm, xóa dữ liệu qua MockAPI
- * Quản lý đủ 3 trạng thái: data, loading, error
- */
 export default function useFetch(url) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // 1. Hàm lấy danh sách dữ liệu (GET)
   const fetchData = useCallback(async (signal) => {
     setLoading(true);
     setError(null);
@@ -26,19 +21,16 @@ export default function useFetch(url) {
     } catch (err) {
       if (err.name === 'AbortError') return;
 
-      console.warn('API error, chuyển sang dùng dữ liệu lưu trữ nội bộ:', err.message);
-      // Fallback về dữ liệu local để bài thi không bị trắng màn hình khi mất mạng
       const local = getLocalExpenses();
       setData(local);
       if (!local || local.length === 0) {
-        setError('Không thể tải dữ liệu từ máy chủ và không có bộ nhớ tạm.');
+        setError('Không thể tải dữ liệu từ máy chủ.');
       }
     } finally {
       setLoading(false);
     }
   }, [url]);
 
-  // useEffect gọi fetch lần đầu khi mount
   useEffect(() => {
     const controller = new AbortController();
     fetchData(controller.signal);
@@ -48,7 +40,6 @@ export default function useFetch(url) {
     };
   }, [fetchData]);
 
-  // 2. Hàm thêm khoản chi (POST)
   const addExpense = async (newExpense) => {
     setLoading(true);
     try {
@@ -59,7 +50,7 @@ export default function useFetch(url) {
       });
 
       if (!response.ok) {
-        throw new Error('Không thể thêm khoản chi lên máy chủ');
+        throw new Error('Lỗi khi thêm dữ liệu');
       }
 
       const created = await response.json();
@@ -70,8 +61,6 @@ export default function useFetch(url) {
       });
       return true;
     } catch (err) {
-      console.warn('Lỗi POST, lưu tạm vào danh sách cục bộ:', err.message);
-      // Giả lập lưu cục bộ nếu API mock bị lỗi
       const localItem = { ...newExpense, id: Date.now().toString() };
       setData((prev) => {
         const updated = [localItem, ...prev];
@@ -84,7 +73,6 @@ export default function useFetch(url) {
     }
   };
 
-  // 3. Hàm xóa khoản chi (DELETE)
   const deleteExpense = async (id) => {
     setLoading(true);
     try {
@@ -99,7 +87,6 @@ export default function useFetch(url) {
       });
       return true;
     } catch (err) {
-      console.warn('Lỗi DELETE, xóa khỏi danh sách cục bộ:', err.message);
       setData((prev) => {
         const updated = prev.filter((item) => String(item.id) !== String(id));
         saveLocalExpenses(updated);

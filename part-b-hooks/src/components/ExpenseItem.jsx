@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ExpenseItem({ expense, index, onDeleteExpense, disabled }) {
   const handleDelete = () => {
-    const isConfirmed = window.confirm(`Bạn có chắc chắn muốn xóa khoản chi: "${expense.name}" không?`);
+    const isConfirmed = window.confirm(`Bạn có chắc muốn xóa khoản chi "${expense.name}" không?`);
     if (isConfirmed) {
       onDeleteExpense(expense.id);
     }
@@ -37,9 +37,8 @@ export default function ExpenseItem({ expense, index, onDeleteExpense, disabled 
           className="btn btn-delete btn-sm"
           onClick={handleDelete}
           disabled={disabled}
-          title="Xóa khoản chi này"
         >
-          🗑️ Xóa
+          Xóa
         </button>
       </td>
     </tr>

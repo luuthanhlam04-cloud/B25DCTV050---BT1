@@ -8,7 +8,7 @@ class ExpenseList extends Component {
     if (!expenses || expenses.length === 0) {
       return (
         <div className="empty-state">
-          <p>📭 Không có khoản chi tiêu nào trong danh mục này.</p>
+          <p>Không có khoản chi tiêu nào trong danh mục này.</p>
         </div>
       );
     }

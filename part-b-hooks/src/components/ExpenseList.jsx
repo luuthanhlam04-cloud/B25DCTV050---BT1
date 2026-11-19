@@ -5,7 +5,7 @@ export default function ExpenseList({ expenses, onDeleteExpense, loading, error,
   if (loading && (!expenses || expenses.length === 0)) {
     return (
       <div className="loading-state">
-        <p>⏳ Đang tải dữ liệu từ máy chủ...</p>
+        <p>Đang tải dữ liệu...</p>
       </div>
     );
   }
@@ -13,9 +13,9 @@ export default function ExpenseList({ expenses, onDeleteExpense, loading, error,
   if (error && (!expenses || expenses.length === 0)) {
     return (
       <div className="error-state">
-        <p>❌ Có lỗi xảy ra: {error}</p>
+        <p>Có lỗi xảy ra: {error}</p>
         <button type="button" className="btn btn-secondary btn-sm" onClick={onRetry}>
-          🔄 Thử lại
+          Thử lại
         </button>
       </div>
     );
@@ -24,7 +24,7 @@ export default function ExpenseList({ expenses, onDeleteExpense, loading, error,
   if (!expenses || expenses.length === 0) {
     return (
       <div className="empty-state">
-        <p>📭 Không tìm thấy khoản chi tiêu nào phù hợp.</p>
+        <p>Không tìm thấy khoản chi tiêu nào phù hợp.</p>
       </div>
     );
   }

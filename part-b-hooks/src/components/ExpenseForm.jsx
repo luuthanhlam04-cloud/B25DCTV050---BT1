@@ -7,29 +7,25 @@ export default function ExpenseForm({ onAddExpense, loading }) {
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [error, setError] = useState('');
 
-  // Yêu cầu đề bài: Dùng useRef để focus ô nhập sau khi thêm
   const nameInputRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 1. Validate nội dung
     if (!name.trim()) {
-      setError('Vui lòng nhập nội dung chi tiêu!');
+      setError('Vui lòng nhập nội dung chi tiêu');
       nameInputRef.current.focus();
       return;
     }
 
-    // 2. Validate số tiền
     const parsedAmount = parseFloat(amount);
     if (isNaN(parsedAmount) || parsedAmount <= 0) {
-      setError('Số tiền chi tiêu phải là số lớn hơn 0!');
+      setError('Số tiền chi tiêu phải lớn hơn 0');
       return;
     }
 
-    // 3. Validate ngày
     if (!date) {
-      setError('Vui lòng chọn ngày chi tiêu!');
+      setError('Vui lòng chọn ngày chi');
       return;
     }
 
@@ -40,18 +36,15 @@ export default function ExpenseForm({ onAddExpense, loading }) {
       date,
     };
 
-    // Gọi hàm thêm chi tiêu
     const success = await onAddExpense(newExpense);
 
     if (success) {
-      // Reset form
       setName('');
       setAmount('');
       setCategory('Ăn uống');
       setDate(new Date().toISOString().split('T')[0]);
       setError('');
 
-      // Focus lại vào ô nhập tên chi tiêu theo đúng yêu cầu đề bài
       if (nameInputRef.current) {
         nameInputRef.current.focus();
       }
@@ -60,8 +53,8 @@ export default function ExpenseForm({ onAddExpense, loading }) {
 
   return (
     <div className="card form-card">
-      <h3>➕ Thêm Khoản Chi Mới</h3>
-      {error && <div className="alert-error">⚠️ {error}</div>}
+      <h3>Thêm khoản chi mới</h3>
+      {error && <div className="alert-error">{error}</div>}
 
       <form onSubmit={handleSubmit} className="expense-form">
         <div className="form-group">
@@ -69,7 +62,7 @@ export default function ExpenseForm({ onAddExpense, loading }) {
           <input
             ref={nameInputRef}
             type="text"
-            placeholder="VD: Cơm trưa, Xăng xe, Giáo trình..."
+            placeholder="Ví dụ: Cơm trưa, Xăng xe..."
             value={name}
             onChange={(e) => {
               setName(e.target.value);
@@ -83,7 +76,7 @@ export default function ExpenseForm({ onAddExpense, loading }) {
             <label>Số tiền (VNĐ):</label>
             <input
               type="number"
-              placeholder="VD: 35000"
+              placeholder="Ví dụ: 35000"
               value={amount}
               onChange={(e) => {
                 setAmount(e.target.value);
@@ -118,7 +111,7 @@ export default function ExpenseForm({ onAddExpense, loading }) {
         </div>
 
         <button type="submit" className="btn btn-primary" disabled={loading}>
-          {loading ? '⏳ Đang lưu...' : '+ Thêm khoản chi'}
+          {loading ? 'Đang lưu...' : 'Thêm khoản chi'}
         </button>
       </form>
     </div>

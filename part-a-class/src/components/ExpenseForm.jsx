@@ -7,7 +7,7 @@ class ExpenseForm extends Component {
       name: '',
       amount: '',
       category: 'Ăn uống',
-      date: new Date().toISOString().split('T')[0], // Mặc định ngày hôm nay
+      date: new Date().toISOString().split('T')[0],
       error: '',
     };
 
@@ -19,7 +19,7 @@ class ExpenseForm extends Component {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
-      error: '', // Xóa thông báo lỗi khi người dùng bắt đầu sửa
+      error: '',
     });
   }
 
@@ -27,26 +27,23 @@ class ExpenseForm extends Component {
     e.preventDefault();
     const { name, amount, category, date } = this.state;
 
-    // 1. Validate nội dung không rỗng
+    // Kiểm tra dữ liệu đầu vào
     if (!name.trim()) {
-      this.setState({ error: 'Vui lòng nhập nội dung chi tiêu!' });
+      this.setState({ error: 'Vui lòng nhập nội dung chi tiêu' });
       return;
     }
 
-    // 2. Validate số tiền hợp lệ và > 0
     const parsedAmount = parseFloat(amount);
     if (isNaN(parsedAmount) || parsedAmount <= 0) {
-      this.setState({ error: 'Số tiền chi tiêu phải là số lớn hơn 0!' });
+      this.setState({ error: 'Số tiền chi tiêu phải lớn hơn 0' });
       return;
     }
 
-    // 3. Validate ngày chi
     if (!date) {
-      this.setState({ error: 'Vui lòng chọn ngày chi tiêu!' });
+      this.setState({ error: 'Vui lòng chọn ngày chi' });
       return;
     }
 
-    // Tạo đối tượng khoản chi mới
     const newExpense = {
       id: Date.now(),
       name: name.trim(),
@@ -55,10 +52,9 @@ class ExpenseForm extends Component {
       date,
     };
 
-    // Truyền dữ liệu lên component cha (App)
     this.props.onAddExpense(newExpense);
 
-    // Reset form về trạng thái ban đầu
+    // Reset lại form
     this.setState({
       name: '',
       amount: '',
@@ -73,8 +69,8 @@ class ExpenseForm extends Component {
 
     return (
       <div className="card form-card">
-        <h3>➕ Thêm Khoản Chi Mới</h3>
-        {error && <div className="alert-error">⚠️ {error}</div>}
+        <h3>Thêm khoản chi mới</h3>
+        {error && <div className="alert-error">{error}</div>}
 
         <form onSubmit={this.handleSubmit} className="expense-form">
           <div className="form-group">
@@ -82,7 +78,7 @@ class ExpenseForm extends Component {
             <input
               type="text"
               name="name"
-              placeholder="VD: Cơm trưa, Xăng xe, Giáo trình..."
+              placeholder="Ví dụ: Cơm trưa, Xăng xe..."
               value={name}
               onChange={this.handleChange}
             />
@@ -94,7 +90,7 @@ class ExpenseForm extends Component {
               <input
                 type="number"
                 name="amount"
-                placeholder="VD: 35000"
+                placeholder="Ví dụ: 35000"
                 value={amount}
                 onChange={this.handleChange}
                 min="1000"
@@ -124,7 +120,7 @@ class ExpenseForm extends Component {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            + Thêm khoản chi
+            Thêm khoản chi
           </button>
         </form>
       </div>

@@ -1,4 +1,3 @@
-// Service cấu hình MockAPI cho Quản lý chi tiêu
 export const INITIAL_EXPENSES = [
   { id: '1', name: 'Phở bò tái nạm', amount: 40000, category: 'Ăn uống', date: '2026-11-18' },
   { id: '2', name: 'Đổ xăng xe máy Wave', amount: 60000, category: 'Đi lại', date: '2026-11-18' },
@@ -9,7 +8,6 @@ export const INITIAL_EXPENSES = [
 
 const STORAGE_KEY = 'ptit_th03_expenses_cache';
 
-// Lấy dữ liệu từ localStorage (phục vụ fallback khi mạng lỗi hoặc API mockapi.io quá tải)
 export function getLocalExpenses() {
   const data = localStorage.getItem(STORAGE_KEY);
   if (!data) {
@@ -23,10 +21,8 @@ export function getLocalExpenses() {
   }
 }
 
-// Lưu dữ liệu vào localStorage
 export function saveLocalExpenses(expenses) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
 }
 
-// Endpoint MockAPI (Có thể dùng endpoint mockapi.io công khai)
 export const MOCKAPI_URL = 'https://67b9354051192bd378ffbe6e.mockapi.io/api/v1/expenses';

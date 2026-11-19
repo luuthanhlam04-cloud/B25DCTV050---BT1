@@ -1,96 +1,99 @@
-# BÀI THỰC HÀNH 03 (N1) - SỔ CHI TIÊU CÁ NHÂN
+# Bài Thực Hành 03: Sổ Chi Tiêu Cá Nhân
 
-> **Học phần:** Lập trình Web (RIPT1306-20261-08)  
-> **Giảng viên:** ThS. Ngô Văn Nhận  
-> **Sinh viên thực hiện:** Lưu Thanh Lâm  
-> **Mã sinh viên:** B25DCTV050  
-> **Lớp:** D25CQTV01-B  
-
----
-
-## 🎯 Danh Sách Tiêu Chí Đạt Được
-
-| Hạng mục | Yêu cầu đề bài | Hiện thực trong bài | Trạng thái |
-| :--- | :--- | :--- | :---: |
-| **Phần A (Class)** | Chia component, state danh sách & bộ lọc tại `App` | `App` quản lý state mảng chi tiêu mẫu và `filterCategory`. | ✅ Hoàn thành |
-| **Phần A (Class)** | Đồng hồ chạy mỗi giây & hủy khi bị ẩn | `componentDidMount` chạy interval, `componentWillUnmount` huỷ timer (có nút Ẩn/Hiện). | ✅ Hoàn thành |
-| **Phần A (Class)** | Form thêm có validate, xóa có xác nhận | Validate rỗng, số tiền > 0, ngày; `window.confirm` khi xóa; danh sách dùng `key`. | ✅ Hoàn thành |
-| **Phần A (Class)** | Lọc theo loại và hiển thị tổng tiền | Bộ lọc 4 loại + Tất cả; tính tổng chi tiêu bằng `reduce`. | ✅ Hoàn thành |
-| **Phần A (Class)** | Tiêu đề tab hiển thị tổng chi qua `componentDidUpdate` | `componentDidUpdate` so sánh state và cập nhật `document.title`. | ✅ Hoàn thành |
-| **Phần B (Hooks)** | Viết lại bằng Function Component + Hooks | 100% Function Component với `useState`, `useEffect`. | ✅ Hoàn thành |
-| **Phần B (Hooks)** | MockAPI CRUD qua custom hook `useFetch` | `useFetch` xử lý GET, POST, DELETE, có trạng thái `loading` và `error`. | ✅ Hoàn thành |
-| **Phần B (Hooks)** | Focus ô nhập sau khi thêm bằng `useRef` | `nameInputRef.current.focus()` tự động kích hoạt sau khi thêm thành công. | ✅ Hoàn thành |
-| **Phần B (Hooks)** | Chế độ sáng / tối bằng `useContext` | `ThemeContext` + `ThemeProvider` chuyển đổi màu nền/chữ tức thì. | ✅ Hoàn thành |
-| **Yêu cầu nâng cao** | Custom hook `useClock` | Tách logic đồng hồ độc lập có cleanup trong `useEffect`. | ✅ Hoàn thành |
-| **Yêu cầu nâng cao** | Thống kê tổng tiền theo từng loại | Thẻ thống kê chi tiết theo Ăn uống, Đi lại, Học tập, Giải trí. | ✅ Hoàn thành |
-| **Yêu cầu nâng cao** | Ô tìm kiếm có độ trễ (debounce) | Debounce 350ms với `setTimeout` trong `useEffect`. | ✅ Hoàn thành |
+- **Sinh viên:** Lưu Thanh Lâm
+- **Mã sinh viên:** B25DCTV050
+- **Lớp:** D25CQTV01-B
+- **Học phần:** Lập trình Web (RIPT1306-20261-08)
+- **Giảng viên:** ThS. Ngô Văn Nhận
 
 ---
 
-## 📁 Cấu Trúc Dự Án
+## 1. Cấu trúc thư mục
 
-Repo gồm 2 thư mục chính theo đúng yêu cầu đề bài:
+Bài làm được chia thành 2 thư mục riêng biệt theo yêu cầu của đề bài:
 
 ```text
 TH3/
-├── part-a-class/          # Phiên bản xây dựng bằng Class Component
+├── part-a-class/          # Phiên bản viết bằng Class Component
 │   ├── src/
 │   │   ├── components/    # Header, Clock, ExpenseForm, ExpenseList, Filter, Total
-│   │   ├── App.jsx        # Component chính quản lý state
+│   │   ├── App.jsx        # Quản lý state danh sách chi tiêu và bộ lọc
 │   │   ├── index.css      # CSS thuần
 │   │   └── main.jsx
 │   ├── index.html
 │   └── package.json
-├── part-b-hooks/          # Phiên bản xây dựng bằng Function Component + Hooks
+├── part-b-hooks/          # Phiên bản viết bằng Function Component + Hooks
 │   ├── src/
-│   │   ├── components/    # Header, Clock, ExpenseForm, ExpenseList, Filter, Total, Search
-│   │   ├── context/       # ThemeContext (Sáng / Tối)
-│   │   ├── hooks/         # useFetch.js, useClock.js
-│   │   ├── App.jsx        # Component chính quản lý hooks & state
+│   │   ├── components/    # Form, List, Filter, Search, Stats, Header
+│   │   ├── context/       # ThemeContext quản lý giao diện sáng/tối
+│   │   ├── hooks/         # Custom hook useFetch, useClock
+│   │   ├── services/      # Cấu hình MockAPI
+│   │   ├── App.jsx
 │   │   ├── index.css
 │   │   └── main.jsx
 │   ├── index.html
 │   └── package.json
-└── README.md              # Báo cáo và hướng dẫn
+└── README.md
 ```
 
 ---
 
-## 🚀 Hướng Dẫn Cài Đặt Và Chạy
+## 2. Hướng dẫn cài đặt và chạy
 
-### 1. Chạy Phần A (Class Component)
+### Phần A (Class Component)
 ```bash
 cd part-a-class
 npm install
 npm run dev
 ```
-Mở trình duyệt truy cập đường dẫn local hiển thị trên terminal (thường là `http://localhost:5173`).
+Truy cập ứng dụng tại `http://localhost:5173`.
 
-### 2. Chạy Phần B (Function Component + Hooks)
+### Phần B (Function Component + Hooks)
 ```bash
 cd part-b-hooks
 npm install
 npm run dev
 ```
-Mở trình duyệt truy cập đường dẫn local hiển thị trên terminal.
+Truy cập ứng dụng tại `http://localhost:5173` (hoặc cổng hiển thị trên terminal).
 
 ---
 
-## 📝 Báo Cáo Lý Thuyết: Hooks Đã Giúp Khắc Phục Thách Thức Của Class Như Thế Nào?
+## 3. Các chức năng đã triển khai
 
-Trong quá trình thực hiện bài toán **Sổ chi tiêu cá nhân**, việc chuyển đổi từ Class Component sang Function Component kết hợp Hooks đã giải quyết các vấn đề lớn sau:
+### Phần A - Class Component
+1. **Phân chia Component:** Tách nhỏ các thành phần giao diện gồm `Header`, `Clock`, `ExpenseForm`, `ExpenseFilter`, `ExpenseList`, `ExpenseItem`, `TotalSummary`.
+2. **Quản lý State tại App:** Mảng `expenses` lưu dữ liệu khởi tạo, `filterCategory` lưu loại đang lọc.
+3. **Đồng hồ thời gian thực:** Khởi tạo `setInterval` trong `componentDidMount`, dọn dẹp bằng `clearInterval` trong `componentWillUnmount`. Có nút ẩn/hiện đồng hồ để kiểm chứng unmount.
+4. **Form và Validate:** Kiểm tra nội dung không để trống, số tiền phải lớn hơn 0 và ngày chi hợp lệ.
+5. **Xác nhận xóa:** Sử dụng `window.confirm` trước khi xóa khỏi danh sách. Mỗi phần tử có `key` duy nhất.
+6. **Lọc và tính tổng:** Cho phép lọc theo từng loại chi tiêu hoặc xem tất cả; tính tổng chi tiêu tự động.
+7. **Tiêu đề trang:** Tự động đồng bộ `document.title` bằng `componentDidUpdate` khi danh sách chi tiêu thay đổi.
 
-1. **Khắc phục sự phân mảnh vòng đời (Lifecycle Fragmentation):**
-   - **Ở Class Component:** Để làm chức năng đồng hồ hoặc cập nhật tiêu đề tab, code bị xé lẻ ra nhiều hàm vòng đời khác nhau (`componentDidMount` để bắt đầu `setInterval`, `componentWillUnmount` để `clearInterval`, và `componentDidUpdate` để đồng bộ `document.title`).
-   - **Ở Function Component (Hooks):** `useEffect` cho phép gom toàn bộ logic khởi tạo, đồng bộ và dọn dẹp (cleanup) vào một nơi duy nhất rất gọn gàng và dễ theo dõi.
+### Phần B - Function Component + Hooks
+1. **Chuyển đổi hoàn toàn sang Function Component:** Sử dụng `useState`, `useEffect`.
+2. **Custom Hook `useFetch`:** Quản lý lấy, thêm, xóa dữ liệu chi tiêu qua MockAPI; có xử lý trạng thái đang tải (`loading`) và thông báo lỗi (`error`).
+3. **Focus với `useRef`:** Sau khi thêm khoản chi thành công, tự động trỏ focus chuột vào ô nhập tên chi tiêu.
+4. **Giao diện Sáng / Tối với `useContext`:** `ThemeContext` cung cấp trạng thái theme và hàm chuyển đổi cho toàn bộ ứng dụng.
+5. **Yêu cầu nâng cao:**
+   - Custom hook `useClock` tự cập nhật và dọn dẹp timer.
+   - Thống kê tổng tiền đã chi riêng biệt theo từng danh mục.
+   - Ô tìm kiếm có debounce 350ms bằng `useEffect` và `setTimeout`.
 
-2. **Dễ dàng tái sử dụng logic với Custom Hooks:**
-   - **Ở Class Component:** Rất khó để tái sử dụng logic gọi API hoặc đếm thời gian mà không dùng các mô hình phức tạp như HOC (Higher-Order Components) hay Render Props.
-   - **Ở Function Component (Hooks):** Ta dễ dàng bóc tách logic gọi MockAPI thành `useFetch` và logic đồng hồ thành `useClock` để dùng lại ở bất kỳ component nào.
+---
 
-3. **Loại bỏ sự phức tạp của từ khóa `this`:**
-   - Class Component đòi hỏi phải dùng `this.state`, `this.setState`, và phải bind các hàm xử lý sự kiện trong constructor (`this.handleAdd = this.handleAdd.bind(this)`).
-   - Function Component dùng trực tiếp các biến và hàm closure, code ngắn hơn, trực quan và ít lỗi ngữ cảnh hơn.
+## 4. So sánh: Hooks đã giúp khắc phục các thách thức của Class như thế nào?
 
-4. **Chia sẻ trạng thái toàn cục đơn giản với `useContext`:**
-   - Việc chuyển đổi giao diện Sáng / Tối (Theme) được chia sẻ mượt mà tới các component con thông qua `useContext`, tránh việc phải truyền props qua nhiều tầng (prop drilling).
+1. **Khắc phục sự phân mảnh vòng đời (Lifecycle):**
+   - Trong Class Component, một chức năng như đồng hồ hoặc cập nhật tiêu đề tab phải viết rải rác ở 3 nơi: `componentDidMount`, `componentDidUpdate` và `componentWillUnmount`.
+   - Trong Function Component, toàn bộ logic khởi tạo, cập nhật và dọn dẹp (cleanup) được gom gọn trong một hook `useEffect`.
+
+2. **Dễ dàng tái sử dụng logic bằng Custom Hooks:**
+   - Trong Class Component, việc tái sử dụng logic gọi API hoặc đếm giờ rất phức tạp (phải dùng Higher-Order Component hoặc Render Props làm code bị lồng nhau nhiều tầng).
+   - Với Hooks, ta chỉ cần viết các hàm `useFetch`, `useClock` là có thể tái sử dụng sạch sẽ ở bất kỳ component nào.
+
+3. **Không cần bận tâm về từ khóa `this`:**
+   - Class Component bắt buộc phải hiểu cơ chế `this`, cần bind hàm trong constructor (`this.handleAdd = this.handleAdd.bind(this)`) hoặc dùng cú pháp arrow function.
+   - Function Component dùng các hàm bình thường, đóng gói qua closure, dễ đọc và ít lỗi phát sinh hơn.
+
+4. **Tránh truyền props qua nhiều tầng (Prop Drilling):**
+   - Với các trạng thái dùng chung toàn app như Theme sáng/tối, `useContext` giúp component con lấy dữ liệu trực tiếp mà không cần truyền qua các component trung gian.

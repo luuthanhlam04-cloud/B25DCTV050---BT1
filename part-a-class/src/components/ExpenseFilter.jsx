@@ -7,7 +7,7 @@ class ExpenseFilter extends Component {
 
     return (
       <div className="filter-box">
-        <span className="filter-label">🏷️ Lọc theo loại:</span>
+        <span className="filter-label">Lọc theo loại:</span>
         <div className="filter-buttons">
           {categories.map((cat) => (
             <button

@@ -9,22 +9,22 @@ export default function Header() {
   return (
     <header className="app-header">
       <div className="header-info">
-        <h2>📒 Sổ Chi Tiêu Cá Nhân</h2>
-        <p className="student-badge">SV: Lưu Thanh Lâm - MS: B25DCTV050 (Phần B: Hooks)</p>
+        <h2>Sổ Chi Tiêu Cá Nhân</h2>
+        <p className="student-badge">SV: Lưu Thanh Lâm - MS: B25DCTV050 (Phần B - Function Component + Hooks)</p>
       </div>
 
       <div className="header-controls">
         <div className="clock-box">
-          🕒 {time.toLocaleTimeString('vi-VN')} ({time.toLocaleDateString('vi-VN')})
+          Đồng hồ: <strong>{time.toLocaleTimeString('vi-VN')}</strong> ({time.toLocaleDateString('vi-VN')})
         </div>
 
         <button
           type="button"
           className="btn btn-theme-toggle"
           onClick={toggleTheme}
-          title="Chuyển đổi giao diện sáng/tối (dùng useContext)"
+          title="Đổi giao diện"
         >
-          {theme === 'light' ? '🌙 Chế độ Tối' : '☀️ Chế độ Sáng'}
+          {theme === 'light' ? 'Giao diện Tối' : 'Giao diện Sáng'}
         </button>
       </div>
     </header>

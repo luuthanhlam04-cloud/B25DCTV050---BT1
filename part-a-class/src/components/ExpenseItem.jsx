@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ExpenseItem extends Component {
   handleDelete = () => {
     const { expense, onDeleteExpense } = this.props;
-    const isConfirmed = window.confirm(`Bạn có chắc chắn muốn xóa khoản chi: "${expense.name}" không?`);
+    const isConfirmed = window.confirm(`Bạn có chắc muốn xóa khoản chi "${expense.name}" không?`);
     if (isConfirmed) {
       onDeleteExpense(expense.id);
     }
@@ -12,7 +12,6 @@ class ExpenseItem extends Component {
   render() {
     const { expense, index } = this.props;
 
-    // Phân loại màu badge đơn giản
     const getBadgeClass = (category) => {
       switch (category) {
         case 'Ăn uống': return 'badge badge-eating';
@@ -41,9 +40,8 @@ class ExpenseItem extends Component {
             type="button"
             className="btn btn-delete btn-sm"
             onClick={this.handleDelete}
-            title="Xóa khoản chi này"
           >
-            🗑️ Xóa
+            Xóa
           </button>
         </td>
       </tr>

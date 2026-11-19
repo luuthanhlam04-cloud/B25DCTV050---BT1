@@ -4,9 +4,7 @@ class TotalSummary extends Component {
   render() {
     const { filteredExpenses, allExpenses, currentFilter } = this.props;
 
-    // Tính tổng tiền danh sách đang lọc
     const totalFiltered = filteredExpenses.reduce((sum, item) => sum + Number(item.amount), 0);
-    // Tính tổng tiền toàn bộ các khoản chi
     const totalAll = allExpenses.reduce((sum, item) => sum + Number(item.amount), 0);
 
     return (
