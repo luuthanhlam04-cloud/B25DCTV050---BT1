@@ -8,6 +8,25 @@
 
 ---
 
+## 🎯 Danh Sách Tiêu Chí Đạt Được
+
+| Hạng mục | Yêu cầu đề bài | Hiện thực trong bài | Trạng thái |
+| :--- | :--- | :--- | :---: |
+| **Phần A (Class)** | Chia component, state danh sách & bộ lọc tại `App` | `App` quản lý state mảng chi tiêu mẫu và `filterCategory`. | ✅ Hoàn thành |
+| **Phần A (Class)** | Đồng hồ chạy mỗi giây & hủy khi bị ẩn | `componentDidMount` chạy interval, `componentWillUnmount` huỷ timer (có nút Ẩn/Hiện). | ✅ Hoàn thành |
+| **Phần A (Class)** | Form thêm có validate, xóa có xác nhận | Validate rỗng, số tiền > 0, ngày; `window.confirm` khi xóa; danh sách dùng `key`. | ✅ Hoàn thành |
+| **Phần A (Class)** | Lọc theo loại và hiển thị tổng tiền | Bộ lọc 4 loại + Tất cả; tính tổng chi tiêu bằng `reduce`. | ✅ Hoàn thành |
+| **Phần A (Class)** | Tiêu đề tab hiển thị tổng chi qua `componentDidUpdate` | `componentDidUpdate` so sánh state và cập nhật `document.title`. | ✅ Hoàn thành |
+| **Phần B (Hooks)** | Viết lại bằng Function Component + Hooks | 100% Function Component với `useState`, `useEffect`. | ✅ Hoàn thành |
+| **Phần B (Hooks)** | MockAPI CRUD qua custom hook `useFetch` | `useFetch` xử lý GET, POST, DELETE, có trạng thái `loading` và `error`. | ✅ Hoàn thành |
+| **Phần B (Hooks)** | Focus ô nhập sau khi thêm bằng `useRef` | `nameInputRef.current.focus()` tự động kích hoạt sau khi thêm thành công. | ✅ Hoàn thành |
+| **Phần B (Hooks)** | Chế độ sáng / tối bằng `useContext` | `ThemeContext` + `ThemeProvider` chuyển đổi màu nền/chữ tức thì. | ✅ Hoàn thành |
+| **Yêu cầu nâng cao** | Custom hook `useClock` | Tách logic đồng hồ độc lập có cleanup trong `useEffect`. | ✅ Hoàn thành |
+| **Yêu cầu nâng cao** | Thống kê tổng tiền theo từng loại | Thẻ thống kê chi tiết theo Ăn uống, Đi lại, Học tập, Giải trí. | ✅ Hoàn thành |
+| **Yêu cầu nâng cao** | Ô tìm kiếm có độ trễ (debounce) | Debounce 350ms với `setTimeout` trong `useEffect`. | ✅ Hoàn thành |
+
+---
+
 ## 📁 Cấu Trúc Dự Án
 
 Repo gồm 2 thư mục chính theo đúng yêu cầu đề bài:

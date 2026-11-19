@@ -1,20 +1,321 @@
+/* Reset và phông chữ cơ bản */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  background-color: #f7f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f4f6f8;
   color: #333;
+  line-height: 1.5;
+  padding: 20px 10px;
 }
 
-.container {
-  max-width: 650px;
+.app-container {
+  max-width: 760px;
   margin: 0 auto;
-  background: #fff;
-  padding: 20px;
+}
+
+/* Header & Đồng hồ */
+.app-header {
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: 8px;
+  border: 1px solid #e1e4e8;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.header-info h2 {
+  font-size: 1.3rem;
+  color: #1f2328;
+  margin-bottom: 4px;
+}
+
+.student-badge {
+  font-size: 0.85rem;
+  color: #57606a;
+}
+
+.header-clock-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.clock-box {
+  background: #f6f8fa;
+  padding: 6px 12px;
   border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid #d0d7de;
+  font-size: 0.88rem;
+  color: #24292f;
+}
+
+/* Card layout */
+.card {
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #24292f;
+}
+
+/* Form */
+.expense-form .form-group {
+  margin-bottom: 12px;
+}
+
+.expense-form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  color: #444;
+}
+
+.expense-form input,
+.expense-form select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.expense-form input:focus,
+.expense-form select:focus {
+  outline: none;
+  border-color: #0969da;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.alert-error {
+  background-color: #ffebe9;
+  color: #cf222e;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ff818266;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background-color: #1f883d;
+  color: #fff;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.btn-primary:hover {
+  background-color: #1a7f37;
+}
+
+.btn-secondary {
+  background-color: #eaeef2;
+  color: #24292f;
+  border-color: #d0d7de;
+}
+
+.btn-secondary:hover {
+  background-color: #d0d7de;
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+}
+
+.btn-delete {
+  background-color: #ffebe9;
+  color: #cf222e;
+  border-color: #ff818266;
+}
+
+.btn-delete:hover {
+  background-color: #cf222e;
+  color: #fff;
+}
+
+/* Bộ lọc */
+.filter-box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #e1e4e8;
+}
+
+.filter-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-right: 4px;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btn-filter {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  color: #24292f;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}
+
+.btn-filter.active {
+  background: #0969da;
+  color: #fff;
+  border-color: #0969da;
+}
+
+/* Dòng tổng tiền */
+.summary-box {
+  background: #ddf4ff;
+  border: 1px solid #54aeff66;
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.summary-item {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summary-total {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.summary-sub {
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: #57606a;
+}
+
+/* Bảng danh sách */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.expense-table th,
+.expense-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e1e4e8;
+  text-align: left;
+}
+
+.expense-table th {
+  background: #f6f8fa;
+  font-weight: 600;
+  color: #57606a;
+}
+
+.expense-table tr:hover {
+  background: #fcfcfc;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-danger {
+  color: #cf222e;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+/* Badges cho các loại */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-eating {
+  background-color: #ffe8cc;
+  color: #d9480f;
+}
+
+.badge-travel {
+  background-color: #d0ebff;
+  color: #1971c2;
+}
+
+.badge-study {
+  background-color: #d3f9d8;
+  color: #2b8a3e;
+}
+
+.badge-fun {
+  background-color: #f3d9fa;
+  color: #9c36b5;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  color: #8c959f;
+  font-size: 0.95rem;
 }
