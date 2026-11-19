@@ -68,6 +68,7 @@ Truy cập ứng dụng tại `http://localhost:5173` (hoặc cổng hiển th�
 5. **Xác nhận xóa:** Sử dụng `window.confirm` trước khi xóa khỏi danh sách. Mỗi phần tử có `key` duy nhất.
 6. **Lọc và tính tổng:** Cho phép lọc theo từng loại chi tiêu hoặc xem tất cả; tính tổng chi tiêu tự động.
 7. **Tiêu đề trang:** Tự động đồng bộ `document.title` bằng `componentDidUpdate` khi danh sách chi tiêu thay đổi.
+8. **Chức năng nâng cao:** Thống kê tổng tiền theo từng loại chi tiêu và ô tìm kiếm có debounce 350ms (dùng `setTimeout` và cleanup `clearTimeout` trong Class).
 
 ### Phần B - Function Component + Hooks
 1. **Chuyển đổi hoàn toàn sang Function Component:** Sử dụng `useState`, `useEffect`.
@@ -75,7 +76,7 @@ Truy cập ứng dụng tại `http://localhost:5173` (hoặc cổng hiển th�
 3. **Focus với `useRef`:** Sau khi thêm khoản chi thành công, tự động trỏ focus chuột vào ô nhập tên chi tiêu.
 4. **Giao diện Sáng / Tối với `useContext`:** `ThemeContext` cung cấp trạng thái theme và hàm chuyển đổi cho toàn bộ ứng dụng.
 5. **Yêu cầu nâng cao:**
-   - Custom hook `useClock` tự cập nhật và dọn dẹp timer.
+   - Custom hook `useClock` tự cập nhật thời gian và dọn dẹp timer.
    - Thống kê tổng tiền đã chi riêng biệt theo từng danh mục.
    - Ô tìm kiếm có debounce 350ms bằng `useEffect` và `setTimeout`.
 

@@ -19,8 +19,7 @@ export default function useFetch(url) {
       setData(json);
       saveLocalExpenses(json);
     } catch (err) {
-      if (err.name === 'AbortError') return;
-
+      // Khi mất mạng hoặc quá thời gian, đọc dữ liệu cục bộ
       const local = getLocalExpenses();
       setData(local);
       if (!local || local.length === 0) {
@@ -33,9 +32,15 @@ export default function useFetch(url) {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchData(controller.signal);
+    // Giới hạn thời gian kết nối 2 giây để tránh bị treo khi mạng chậm
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+    fetchData(controller.signal).finally(() => {
+      clearTimeout(timeoutId);
+    });
 
     return () => {
+      clearTimeout(timeoutId);
       controller.abort();
     };
   }, [fetchData]);
@@ -43,11 +48,16 @@ export default function useFetch(url) {
   const addExpense = async (newExpense) => {
     setLoading(true);
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
+
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newExpense),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error('Lỗi khi thêm dữ liệu');
@@ -61,6 +71,7 @@ export default function useFetch(url) {
       });
       return true;
     } catch (err) {
+      // Lưu cục bộ nếu mạng lỗi
       const localItem = { ...newExpense, id: Date.now().toString() };
       setData((prev) => {
         const updated = [localItem, ...prev];
@@ -76,9 +87,14 @@ export default function useFetch(url) {
   const deleteExpense = async (id) => {
     setLoading(true);
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
+
       await fetch(`${url}/${id}`, {
         method: 'DELETE',
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       setData((prev) => {
         const updated = prev.filter((item) => String(item.id) !== String(id));

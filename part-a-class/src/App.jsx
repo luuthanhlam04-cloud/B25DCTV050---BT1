@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import ExpenseForm from './components/ExpenseForm';
 import ExpenseFilter from './components/ExpenseFilter';
+import ExpenseSearch from './components/ExpenseSearch';
+import CategoryStats from './components/CategoryStats';
 import ExpenseList from './components/ExpenseList';
 import TotalSummary from './components/TotalSummary';
 
@@ -17,12 +19,14 @@ class App extends Component {
         { id: 5, name: 'Trà sữa trân châu', amount: 30000, category: 'Ăn uống', date: '2026-11-19' },
       ],
       filterCategory: 'Tất cả',
+      searchTerm: '',
       showClock: true,
     };
 
     this.handleAddExpense = this.handleAddExpense.bind(this);
     this.handleDeleteExpense = this.handleDeleteExpense.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleToggleClock = this.handleToggleClock.bind(this);
   }
 
@@ -57,6 +61,10 @@ class App extends Component {
     this.setState({ filterCategory: category });
   }
 
+  handleSearchChange(term) {
+    this.setState({ searchTerm: term });
+  }
+
   handleToggleClock() {
     this.setState((prevState) => ({
       showClock: !prevState.showClock,
@@ -64,11 +72,13 @@ class App extends Component {
   }
 
   render() {
-    const { expenses, filterCategory, showClock } = this.state;
+    const { expenses, filterCategory, searchTerm, showClock } = this.state;
 
-    const filteredExpenses = filterCategory === 'Tất cả'
-      ? expenses
-      : expenses.filter((item) => item.category === filterCategory);
+    const filteredExpenses = expenses.filter((item) => {
+      const matchCategory = filterCategory === 'Tất cả' || item.category === filterCategory;
+      const matchSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchCategory && matchSearch;
+    });
 
     return (
       <div className="app-container">
@@ -80,10 +90,14 @@ class App extends Component {
         <main className="app-main">
           <ExpenseForm onAddExpense={this.handleAddExpense} />
 
+          <ExpenseSearch onSearchChange={this.handleSearchChange} />
+
           <ExpenseFilter 
             currentFilter={filterCategory} 
             onFilterChange={this.handleFilterChange} 
           />
+
+          <CategoryStats expenses={expenses} />
 
           <TotalSummary 
             filteredExpenses={filteredExpenses} 
